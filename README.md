@@ -118,6 +118,12 @@ On [Netgear GPL Center](http://kb.netgear.com/app/answers/detail/a_id/2649/~/net
 
 ---
 
+# Updates
+
+I found it just give out crash report but it is in `lsmod` list but could not rmmod it. It might work?
+
+---
+
 At last, many thanks to OpenWrt Forum user `ILOVEPIE` who gave me idea to compile this module.
 
 [Link on OpenWrt Forum](https://forum.openwrt.org/viewtopic.php?id=64195)
