@@ -36,7 +36,7 @@
 #include "qdpc_debug.h"
 #include "qdpc_init.h"
 #include "qdpc_regs.h"
-#include "qdpc_platform.h"
+#include <qdpc_platform.h>
 
 static int use_msi = 1;
 module_param(use_msi, int, 0644);

@@ -38,7 +38,7 @@
 #include <linux/pci.h>
 
 
-#include "qdpc_platform.h"
+#include <qdpc_platform.h>
 
 #include <asm/cache.h>		/* For cache line size definitions */
 #include <asm/cacheflush.h>	/* For cache flushing functions */
@@ -1298,7 +1298,7 @@ int vmac_net_init(struct pci_dev *pdev)
 	ndev->netdev_ops = &vmac_device_ops;
 	ndev->tx_queue_len = QTN_GLOBAL_INIT_EMAC_TX_QUEUE_LEN;
 	// This won't work on kernel 3.16+
-	// SET_ETHTOOL_OPS(ndev, &vmac_ethtool_ops); 
+	// SET_ETHTOOL_OPS(ndev, &vmac_ethtool_ops);
 	ndev->ethtool_ops = &vmac_ethtool_ops;
 
 	/* Initialize private data */

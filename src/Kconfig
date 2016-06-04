@@ -1,4 +1,0 @@
-config QDPC_HOST
-	tristate "Quantenna 5GHz Chip PCIE2 Host Driver"
-	help
-	  This is a driver for Host SoC to communicate with Quantenna SoC by using PCIE2.

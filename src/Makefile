@@ -1,8 +1,8 @@
-EXTRA_CFLAGS	+= -Wall -Wno-deprecated-declarations	\
-		   -I$(src)		\
-		   -I$(src)/common $(DNI_KMOD_CFLAGS)
+#EXTRA_CFLAGS	+= -Wall -Wno-deprecated-declarations	\
+#		   -I$(src)		\
+#		   -I$(src)/common $(DNI_KMOD_CFLAGS)
 
-EXTRA_CFLAGS    += -DQTN_TX_SKBQ_SUPPORT -DQTN_WAKEQ_SUPPORT
+#EXTRA_CFLAGS    += -DDNI_EXTRA_FUNCTIONS -DSKIP_PCI_DMA_MASK -DQCA_NSS_PLATFORM -DDISABLE_PCIE_UPDATA_HW_BAR -DRX_IP_HDR_REALIGN -DQTN_TX_SKBQ_SUPPORT -DQTN_WAKEQ_SUPPORT
 
 PWD	:= $(shell pwd)
 

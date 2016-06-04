@@ -25,7 +25,7 @@
 
 #include <linux/version.h>
 
-#include "topaz_vnet.h"
+#include <topaz_vnet.h>
 
 #if LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,27)
 #define IOREMAP      ioremap_wc

@@ -690,10 +690,9 @@ static int link_monitor(void *data)
 				is_ep_reset = false;
 
 				/* add code to reboot the while QCA system here*/
-				printk("%s: Attempting to reboot QCA system.\n", __func__);
-				//ARM doesn't support this? (Unknown Symbol)
-				//machine_restart(NULL);
-				//TODO
+				printk("%s: Unable to reboot QCA system.\n", __func__);
+				// Strange here: Unknown Symbol machine_restart, but appeared in /proc/kallsyms
+				// machine_restart(NULL);
 				break;
 			}
 			msleep(500);

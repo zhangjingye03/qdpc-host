@@ -21,7 +21,7 @@
 #define __QDPC_REGS_H__
 
 #include <linux/bitops.h>
-#include "qdpc_platform.h"
+#include <qdpc_platform.h>
 
 #define QDPC_SYSCTL_BAR		0
 #define QDPC_SHMEM_BAR		2

@@ -27,8 +27,8 @@
 #include <linux/skbuff.h>
 #include <linux/netdevice.h>
 
-#include "qdpc_config.h"
-#include "topaz_netcom.h"
+#include <qdpc_config.h>
+#include <topaz_netcom.h>
 
 #define PROC_NAME_SIZE		(32)
 #define VMAC_BD_EMPTY		((uint32_t)0x00000001)

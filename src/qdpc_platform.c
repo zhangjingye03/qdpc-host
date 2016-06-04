@@ -23,9 +23,9 @@
 
 #include <linux/interrupt.h>
 
-#include "qdpc_platform.h"
-#include "topaz_vnet.h"
-#include "qdpc_regs.h"
+#include <qdpc_platform.h>
+#include <topaz_vnet.h>
+#include <qdpc_regs.h>
 #include <linux/netdevice.h>
 #include <linux/pci.h>
 
