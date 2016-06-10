@@ -21,10 +21,11 @@ define KernelPackage/qdpc-host
   FILES:=$(PKG_BUILD_DIR)/qdpc-host.ko
   KCONFIG:=
   AUTOLOAD:=$(call AutoLoad,40, qdpc-host)
+	DEPENDS:=+kmod-qca-nss-drv +kmod-qca-nss-gmac
 endef
 
 define KernelPackage/qdpc-host/Default/description
- This package contains the proprietary wireless driver for the Quantenna 
+ This package contains the proprietary wireless driver for the Quantenna
  chipset.
 endef
 
@@ -37,10 +38,10 @@ endef
 EXTRA_CFLAGS:= \
 	$(patsubst CONFIG_%, -DCONFIG_%=1, $(patsubst %=m,%,$(filter %=m,$(EXTRA_KCONFIG)))) \
 	$(patsubst CONFIG_%, -DCONFIG_%=1, $(patsubst %=y,%,$(filter %=y,$(EXTRA_KCONFIG)))) \
-	-DDNI_EXTRA_FUNCTIONS -DSKIP_PCI_DMA_MASK -DDISABLE_PCIE_UPDATA_HW_BAR -DRX_IP_HDR_REALIGN -DQTN_TX_SKBQ_SUPPORT -DQTN_WAKEQ_SUPPORT \
+	-DDNI_EXTRA_FUNCTIONS -DSKIP_PCI_DMA_MASK -DDISABLE_PCIE_UPDATA_HW_BAR -DRX_IP_HDR_REALIGN -DQTN_TX_SKBQ_SUPPORT -DQTN_WAKEQ_SUPPORT -DQCA_NSS_PLATFORM \
 	-I$(PKG_BUILD_DIR)/common -I$(PKG_BUILD_DIR)/include -I$(PKG_BUILD_DIR)
 
-#-DQCA_NSS_PLATFORM -DDNI_5G_LED not included, due to lack of/no support
+#-DDNI_5G_LED not included, due to lack of/no support
 
 EXTRA_KCONFIG:= \
 	CONFIG_QDPC_HOST=m

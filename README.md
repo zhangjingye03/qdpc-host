@@ -59,9 +59,13 @@ Kernel Log would say something like below if you insmod it.
 
 Then, interface `host0` appears and the QT3840 chip's serial log begins to flow. :-)
 
+* This is only a kernel module. If you want to control WiFi, `qcsapi` is required too. I'll post it later if I can make it work properly.
+
 ## How to use
 
 * Just cd into `/path/to/your/openwrt/package/kernel`
+
+* Clone [qca-nss-drv](https://github.com/zhangjingye03/qca-nss-drv) and [qca-nss-gmac](https://github.com/zhangjingye03/qca-nss-gmac) first to support NSS.
 
 * Clone this repo
 
@@ -75,9 +79,9 @@ Then, interface `host0` appears and the QT3840 chip's serial log begins to flow.
 
 * `make`
 
-* Find `kmod-qdpc-host_x.x.x-xxx.ipk` in `bin/ipq806x/packages/kernel` and push it into your router's `/tmp` directory.
+* Find `kmod-qdpc-host_x.x.x-xxx.ipk`, `kmod-qca-nss-drv_x.x.x-xxx.ipk`, `kmod-qca-nss-gmac_x.x.x-xxx.ipk` in `bin/ipq806x/packages/kernel` and push it into your router's `/tmp` directory.
 
-* Execute `opkg install /tmp/kmod-qdpc-host_x.x.x-xxx.ipk` on your router
+* Execute `opkg install /tmp/*.ipk` on your router
 
 * Enjoy
 
@@ -95,19 +99,27 @@ Then, interface `host0` appears and the QT3840 chip's serial log begins to flow.
 
 On [Netgear GPL Center](http://kb.netgear.com/app/answers/detail/a_id/2649/~/netgear-open-source-code-for-programmers-(gpl)), download [R7500, 1.0.0.94](http://www.downloads.netgear.com/files/GPL/R7500-and_qtn_gpl_src_V1.0.0.94.zip).
 
-## Issues
+## Features
+
+### Working
+
+* Qualcomm Network Sub System (NSS) support
+
+* Auto load on boot
+
+### Not working
 
 * 5Ghz LED cannot be used to show WiFi data link because Netgear or Qualcomm or Quantenna changed many places to control LED and it requires a function called `detect_wifi_5g_data`, which appears in Netgear's GPL Source `./git_home/linux.git/sourcecode/drivers/gpio/gpio-msm-common.c`. However you can specify its trigger to netdev and device to host0.
 
-* Don't support Qualcomm Network Subsystem because neither Openwrt Designated Driver nor newest kernel supports it.
+* If something bad happens on Quantenna Chipset (such as kernel panic), ipq8064 cannot restart automatically. (`machine_restart` has been commented out)
 
-* If something bad happens on Quantenna Chipset, ipq8064 cannot restart automatically.
-
-* This is only a kernel module. If you want to control WiFi, `qcsapi` is required too. I'll post it later if I can make it work properly.
+* ~~Sometimes the drivers crashed quietly (maybe TX queue full) during large data flows.~~ (qca-nss-drv solves it)
 
 ## Lesson I have learnt
 
 * DO NOT use different kernel because the architect in it may vary. I used Openwrt official snapshots version and insmoded my build kernel module to it. Well, lots of strange null pointers, allocation fails, etc. I spent much time to add printk to many places to see where it goes, although no use at all. But when I switch the official firmware to mine, this kernel module works.
+
+* DO NOT always ask others for help. DO IT YOURSELF, and you will find it easier and more interesting.
 
 ---
 
